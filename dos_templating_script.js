@@ -1,9 +1,21 @@
-
-
-
-function _dosStart(){
+function _dosStart () {
     const stylesObj = {
-        firstEL: `
+        wrapper: `
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-content: center;
+            align-items: center;
+
+            width: auto;
+            height: auto;
+            margin: 20px;
+            
+            position: fixed;
+
+
+        `,
+        showButton: `
             display: flex;
             align-items: center;
             justify-content: center;
@@ -12,17 +24,14 @@ function _dosStart(){
             background-color: gray;
             cursor: pointer;
             border: 1px solid;
-        `,
-        wrapper: `
-            display: flex;
-            flex-direction: row;
-            width: 300px;
-            justify-content: space-around;
-        
-        `
-    }
 
-    const _templates = {
+        
+        `,
+        
+
+    };
+    
+    const templates = {
         firstTemplate: {
             RU: `(РУС) ПЕРВЫЙ ШАБЛОН`,
             UA: `(УКР) ПЕРШИЙ ШАБЛОН`
@@ -33,71 +42,43 @@ function _dosStart(){
             RU: `(РУС) ВТОРОЙ ШАБЛОН`,
             UA: `(УКР) ДРУГИЙ ШАБЛОН`
         }
-    
-    }
-    
-    function NewNode(tag = "div", id){
-        this.tag = document.createElement(tag);
-        this.tag.id = id;
 
-        if (this.tagName = "INPUT") {
-            this.tag.type = "submit";
-        }
-        
-        return this.tag;
-    }
+    };
 
-    const categories = ["категория 1", "категория 2", "категория 3", "4"];
-    const showButton = new NewNode("input", "dos_button");
-    const applyButton = new NewNode("input")
-    const select = new NewNode("select");
-    const wrapper = new NewNode("div");
-    document.body.prepend(wrapper);
-    wrapper.append(showButton);
-    
-    
+    class GenerateElement {
+        constructor(tag, setCss, type = '', ) {
+            this.tag = document.createElement(tag);
+            this.tag.style.cssText = setCss;
+            
+            type != '' ? this.tag.type = type : false;
+            return this.tag;
 
-    showButton.style.cssText = stylesObj.firstEL;
-    wrapper.style.cssText = stylesObj.wrapper;
-
-    
-    function generateList () {
-        if ( !(select.children.length >= categories.length) ) {
-            for (let i = 0; i < categories.length; i++) {
-                let option = new NewNode("option");
-                const el = categories[i];
-                option.innerText = el;
-                option.value = "val" + Number(i+1);
-                select.append(option);
-                select[i].selected=true;
-
-                wrapper.append(applyButton);
-            } 
-        } else {
-            return;
         }
     }
 
-    function checkOption(){
-        
-    }
+    const showButton = new GenerateElement("input", stylesObj.showButton, "submit");
 
-
-
-
-
-    function showList () {
-        wrapper.append(select);
-        generateList();
-
-    }
-
-
-
-
-
-
-
-    showButton.addEventListener("click", showList);
-}
+    
+    
+}  
 _dosStart();
+
+/* 
+    нехай шаблон = новий об'єкт {
+        конструктор з default параметрами
+        параметр "текст" - змінний
+        інші - по-стандарту
+
+        далі методи
+
+        метод створення елементу та вставки його в документ
+
+        метод, який задає стилі переданому елементу
+
+        метод, який вішає прослуховувачі на елементи
+
+        метод, що при кліку бере з конструктора
+    }
+
+
+*/

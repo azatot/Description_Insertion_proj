@@ -1,23 +1,5 @@
-// і оце вся логіка?
-// сійозно?
 
-let fieldRU = document.querySelector("#textarea1");
-let fieldUA = document.querySelector("#textarea2");
 
-document.querySelector("#dos_templates_options").onchange = function(){
-    switch (this.selectedIndex) {
-        case 0:
-            fieldRU.innerHTML = templates.firstTemplate.RU;
-            fieldUA.innerHTML = templates.firstTemplate.UA;
-            break;
-    
-        default:
-            fieldRU.innerText = "НИЧЕГО";
-            fieldUA.innerText = "НІЧОГО";
-            break;
-    }
-    
-}
 
 function _dos_Start_JSLayout () {
     const stylesObj = {
@@ -83,6 +65,65 @@ const templates = {
         UA: `(УКР) ДРУГИЙ ШАБЛОН`
     }
 
+};
+
+// і оце вся логіка?
+// сійозно?
+
+const 
+wrapper = document.querySelector(".dos_wrapper"),
+fieldRU = document.querySelector("#textarea1"),
+fieldUA = document.querySelector("#textarea2"),
+openButton = document.querySelector("#dos_open_list"),
+listWrapper = document.querySelector("#dos_list_wrapper"),
+selList = listWrapper.querySelector("#dos_templates_options");
+pasteButton = listWrapper.querySelector("#dos_paste_button"),
+previewBlock = listWrapper.querySelector("#dos_preview_block");
+
+openButton.value = "Show";
+
+openButton.onclick = function(){
+    if (listWrapper.style.display == "none") {
+        this.value = "Hide";
+        listWrapper.style.display = "flex";
+        wrapper.style.height = "550px";
+    } else {
+        this.value = "Show";
+        wrapper.style.height = "50px";
+        listWrapper.style.display = "none";
+        
+    };
+};
+
+selList.onchange = function(){
+    switch (this.selectedIndex){
+        case 1:
+            previewBlock.children[1].innerHTML = templates.firstTemplate.RU;
+            previewBlock.children[3].innerHTML = templates.firstTemplate.UA;
+        break;
+
+        default:
+            previewBlock.children[1].innerHTML = "пусто";
+            previewBlock.children[3].innerHTML = "пусто";
+        break;
+
+    };
+};
+
+pasteButton.onclick = function(){
+    switch (document.querySelector("#dos_templates_options").selectedIndex) {
+        case 1:
+            fieldRU.innerHTML = previewBlock.children[1].innerHTML;
+            fieldUA.innerHTML = previewBlock.children[3].innerHTML;
+            
+            break;
+    
+        default:
+            fieldRU.innerText = previewBlock.children[1].innerHTML;
+            fieldUA.innerText = previewBlock.children[3].innerHTML;
+            break;
+    };
+    
 };
 
 

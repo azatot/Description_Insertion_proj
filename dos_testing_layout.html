@@ -11,24 +11,26 @@
 
 <body>
     <!-- visual layout for later transformed to JS -->
-    <div id="dos_wrapper">
-        <input type="submit" value="OPEN" id="dos_open_list">
+    <div id="dos_wrapper" class="dos_wrapper">
+        <input type="submit" value="" id="dos_open_list">
         <div id="dos_list_wrapper">
 
             <select name="categories-list" id="dos_templates_options">
-                    <option selected disabled>Choose one</option>
+                <option selected disabled> - Категория - </option>
+                <option value="first-template" id="templ-1"> - Подкатегория 1</option>
+                <option value="second-template"> - Подкатегория 2</option>
+                <option value="second-template"> - Подкатегория 3</option>
 
-                <option value="first-template" id="templ-1">Template 1</option>
-                <option value="second-template">Template 2</option>
-                <option value="second-template">Template 2</option>
-                <option value="second-template">Template 2</option>
-                <option value="second-template">Template 2</option>
-                <option value="second-template">Template 2</option>
-                <option value="second-template">Template 2</option>
-                <option value="second-template">Template 2</option>
             </select>
 
-        <input type="submit" value="PASTE" id="paste_button">
+
+        <input type="submit" value="Paste" id="dos_paste_button">
+        <div id="dos_preview_block">
+            <label for="dos_preview_area_ru">RU</label>
+            <textarea name="RU" id="dos_preview_area_ru" cols="30" rows="10"></textarea>
+            <label for="dos_preview_area_ua">UA</label>
+            <textarea name="UA" id="dos_preview_area_ua" cols="30" rows="10"></textarea>
+        </div>
         </div>
 
     </div>

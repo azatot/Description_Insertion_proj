@@ -1,4 +1,25 @@
-function _dosStart () {
+// і оце вся логіка?
+// сійозно?
+
+let fieldRU = document.querySelector("#textarea1");
+let fieldUA = document.querySelector("#textarea2");
+
+document.querySelector("#dos_templates_options").onchange = function(){
+    switch (this.selectedIndex) {
+        case 0:
+            fieldRU.innerHTML = templates.firstTemplate.RU;
+            fieldUA.innerHTML = templates.firstTemplate.UA;
+            break;
+    
+        default:
+            fieldRU.innerText = "НИЧЕГО";
+            fieldUA.innerText = "НІЧОГО";
+            break;
+    }
+    
+}
+
+function _dos_Start_JSLayout () {
     const stylesObj = {
         wrapper: `
             display: flex;
@@ -31,20 +52,6 @@ function _dosStart () {
 
     };
     
-    const templates = {
-        firstTemplate: {
-            RU: `(РУС) ПЕРВЫЙ ШАБЛОН`,
-            UA: `(УКР) ПЕРШИЙ ШАБЛОН`
-            
-        },
-    
-        secondTemplate: {
-            RU: `(РУС) ВТОРОЙ ШАБЛОН`,
-            UA: `(УКР) ДРУГИЙ ШАБЛОН`
-        }
-
-    };
-
     class GenerateElement {
         constructor(tag, setCss, type = '', ) {
             this.tag = document.createElement(tag);
@@ -61,7 +68,23 @@ function _dosStart () {
     
     
 }  
-_dosStart();
+_dos_Start_JSLayout();
+
+
+const templates = {
+    firstTemplate: {
+        RU: `<div>(РУС) ПЕРВЫЙ ШАБЛОН</div>`,
+        UA: `<div>(УКР) ПЕРШИЙ ШАБЛОН</div>`
+        
+    },
+
+    secondTemplate: {
+        RU: `(РУС) ВТОРОЙ ШАБЛОН`,
+        UA: `(УКР) ДРУГИЙ ШАБЛОН`
+    }
+
+};
+
 
 /* 
     нехай шаблон = новий об'єкт {

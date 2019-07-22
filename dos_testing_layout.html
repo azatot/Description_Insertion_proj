@@ -4,10 +4,39 @@
 <head>
     <meta charset="utf-8">
     <title>CKEditor 5 – Document editor</title>
-    
+
+    <link rel="stylesheet" href="./styles_template_plug.css">
+
 </head>
 
 <body>
+    <!-- visual layout for later transformed to JS -->
+    <div id="dos_wrapper">
+        <input type="submit" value="OPEN" id="dos_open_list">
+        <div id="dos_list_wrapper">
+
+            <select name="categories-list" id="dos_templates_options">
+                    <option selected disabled>Choose one</option>
+
+                <option value="first-template" id="templ-1">Template 1</option>
+                <option value="second-template">Template 2</option>
+                <option value="second-template">Template 2</option>
+                <option value="second-template">Template 2</option>
+                <option value="second-template">Template 2</option>
+                <option value="second-template">Template 2</option>
+                <option value="second-template">Template 2</option>
+                <option value="second-template">Template 2</option>
+            </select>
+
+        <input type="submit" value="PASTE" id="paste_button">
+        </div>
+
+    </div>
+
+
+    <!-- ***************************************** -->
+    
+    <!-- main -->
     <h1>Document editor</h1>
     <textarea name="1" id="textarea1" cols="30" rows="10">
     RU    
@@ -16,7 +45,19 @@
     UA  
     </textarea>
     
+    
+
+
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    
+
     <script src="./dos_templating_script.js"></script>
+
 </body>
 
 </html>

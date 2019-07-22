@@ -53,27 +53,30 @@ function _dos_Start_JSLayout () {
 _dos_Start_JSLayout();
 
 
+
 const templates = {
-    firstTemplate: {
-        RU: `<div>(РУС) ПЕРВЫЙ ШАБЛОН</div>`,
-        UA: `<div>(УКР) ПЕРШИЙ ШАБЛОН</div>`
+    buzzer: {
+        RU: `<div>(РУС) Здесь шаблон для микрофонов типа BUZZER</div><img href="#">`,
+        UA: `<div>(УКР) Тут шаблон для мікрофонів типу BUZZER</div>`
         
     },
 
-    secondTemplate: {
-        RU: `(РУС) ВТОРОЙ ШАБЛОН`,
-        UA: `(УКР) ДРУГИЙ ШАБЛОН`
+    speaker: {
+        RU: `<div>(РУС) Здесь шаблон для микрофонов типа SPEAKER</div>`,
+        UA: `<div>(УКР) Тут шаблон для мікрофонів типу SPEAKER</div>`
     }
 
 };
 
-// і оце вся логіка?
-// сійозно?
+
+
 
 const 
 wrapper = document.querySelector(".dos_wrapper"),
+
 fieldRU = document.querySelector("#textarea1"),
 fieldUA = document.querySelector("#textarea2"),
+
 openButton = document.querySelector("#dos_open_list"),
 listWrapper = document.querySelector("#dos_list_wrapper"),
 selList = listWrapper.querySelector("#dos_templates_options");
@@ -82,11 +85,14 @@ previewBlock = listWrapper.querySelector("#dos_preview_block");
 
 openButton.value = "Show";
 
+let text = [];
+
 openButton.onclick = function(){
     if (listWrapper.style.display == "none") {
         this.value = "Hide";
         listWrapper.style.display = "flex";
         wrapper.style.height = "550px";
+        wrapper.style.width = "250px";
     } else {
         this.value = "Show";
         wrapper.style.height = "50px";
@@ -95,37 +101,35 @@ openButton.onclick = function(){
     };
 };
 
+let setTemplates = (rutext, uatext) => {
+    text.length = 0;
+    text.push(rutext, uatext);
+    previewBlock.children[1].innerText = text[0];
+    previewBlock.children[3].innerText = text[1];
+}
+
 selList.onchange = function(){
     switch (this.selectedIndex){
         case 1:
-            previewBlock.children[1].innerHTML = templates.firstTemplate.RU;
-            previewBlock.children[3].innerHTML = templates.firstTemplate.UA;
+            setTemplates(templates.buzzer.RU, templates.buzzer.UA);
         break;
 
-        default:
-            previewBlock.children[1].innerHTML = "пусто";
-            previewBlock.children[3].innerHTML = "пусто";
+        case 2:
+            setTemplates(templates.speaker.RU,  templates.speaker.UA);
         break;
 
     };
 };
+
+
 
 pasteButton.onclick = function(){
-    switch (document.querySelector("#dos_templates_options").selectedIndex) {
-        case 1:
-            fieldRU.innerHTML = previewBlock.children[1].innerHTML;
-            fieldUA.innerHTML = previewBlock.children[3].innerHTML;
-            
-            break;
-    
-        default:
-            fieldRU.innerText = previewBlock.children[1].innerHTML;
-            fieldUA.innerText = previewBlock.children[3].innerHTML;
-            break;
-    };
-    
+    fieldRU.innerHTML = text[0];
+    fieldUA.innerHTML = text[1];
 };
 
+// і оце вся логіка?
+// сійозно?
 
 /* 
     нехай шаблон = новий об'єкт {

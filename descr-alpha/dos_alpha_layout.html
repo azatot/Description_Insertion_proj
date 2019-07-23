@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor 5 – Document editor</title>
+
+    <link rel="stylesheet" href="./styles_template_plug.css">
+
+</head>
+
+<body>
+    <!-- visual layout for later transformed to JS -->
+    <div id="dos_wrapper" class="dos_wrapper">
+        <input type="submit" value="" id="dos_open_list">
+        <div id="dos_list_wrapper">
+
+            <select name="categories-list" id="dos_templates_options">
+                <option selected disabled>Категория</option>
+                <option value="first-template" id="templ-1"> - Buzzer</option>
+                <option value="second-template" id="templ2"> - Speaker</option>
+                
+
+            </select>
+
+
+        <input type="submit" value="Paste" id="dos_paste_button">
+        <div id="dos_preview_block">
+            <label for="dos_preview_area_ru">RU</label>
+            <textarea name="RU" id="dos_preview_area_ru" cols="30" rows="10"></textarea>
+            <label for="dos_preview_area_ua">UA</label>
+            <textarea name="UA" id="dos_preview_area_ua" cols="30" rows="10"></textarea>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- ***************************************** -->
+    
+    <!-- main -->
+    <h1>Document editor</h1>
+    <textarea name="1" id="textarea1" cols="30" rows="10">
+    RU    
+    </textarea>
+    <textarea name="2" id="textarea2" cols="30" rows="10">
+    UA  
+    </textarea>
+    
+    
+
+
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    <div class="placeholder" style="width: 300px; height: 300px; background: lightblue"></div>
+    
+
+    <script src="./dos_templating_script.js"></script>
+
+</body>
+
+</html>

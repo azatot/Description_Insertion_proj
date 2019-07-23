@@ -71,17 +71,14 @@ const templates = {
 
 
 
-const 
-wrapper = document.querySelector(".dos_wrapper"),
-
-fieldRU = document.querySelector("#textarea1"),
-fieldUA = document.querySelector("#textarea2"),
-
-openButton = document.querySelector("#dos_open_list"),
-listWrapper = document.querySelector("#dos_list_wrapper"),
-selList = listWrapper.querySelector("#dos_templates_options");
-pasteButton = listWrapper.querySelector("#dos_paste_button"),
-previewBlock = listWrapper.querySelector("#dos_preview_block");
+const wrapper = document.querySelector(".dos_wrapper"),
+        fieldRU = document.querySelector("#textarea1"),
+        fieldUA = document.querySelector("#textarea2"),
+        openButton = document.querySelector("#dos_open_list"),
+        listWrapper = document.querySelector("#dos_list_wrapper"),
+        selList = listWrapper.querySelector("#dos_templates_options");
+        pasteButton = listWrapper.querySelector("#dos_paste_button"),
+        previewBlock = listWrapper.querySelector("#dos_preview_block");
 
 openButton.value = "Show";
 

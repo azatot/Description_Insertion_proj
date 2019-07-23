@@ -75,25 +75,25 @@ const wrapper = document.querySelector(".dos_wrapper"),
         fieldRU = document.querySelector("#textarea1"),
         fieldUA = document.querySelector("#textarea2"),
         openButton = document.querySelector("#dos_open_list"),
-        listWrapper = document.querySelector("#dos_list_wrapper"),
-        selList = listWrapper.querySelector("#dos_templates_options");
-        pasteButton = listWrapper.querySelector("#dos_paste_button"),
-        previewBlock = listWrapper.querySelector("#dos_preview_block");
+        dos_list_wrapper = document.querySelector("#dos_list_wrapper"),
+        selList = dos_list_wrapper.querySelector("#dos_templates_options");
+        pasteButton = dos_list_wrapper.querySelector("#dos_paste_button"),
+        previewBlock = dos_list_wrapper.querySelector("#dos_preview_block");
 
 openButton.value = "Show";
 
 let text = [];
 
 openButton.onclick = function(){
-    if (listWrapper.style.display == "none") {
+    if (dos_list_wrapper.style.display == "none") {
         this.value = "Hide";
-        listWrapper.style.display = "flex";
+        dos_list_wrapper.style.display = "flex";
         wrapper.style.height = "550px";
         wrapper.style.width = "250px";
     } else {
         this.value = "Show";
         wrapper.style.height = "50px";
-        listWrapper.style.display = "none";
+        dos_list_wrapper.style.display = "none";
         
     };
 };

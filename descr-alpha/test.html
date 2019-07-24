@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Alpha for description insertion plugin</title>
+</head>
+
+<body>
+
+    <iframe src="" frameborder="0">
+
+    </iframe>
+    <iframe src="" frameborder="0">
+
+    </iframe>
+
+
+
+
+    <script>
+
+        let frames = document.querySelectorAll("iframe");
+
+        frames.forEach(el => {
+            el.innerHTML = `${new Document}`;
+        });
+
+        let contentDocument1 = document.querySelectorAll("iframe")[0].contentDocument,
+            contentDocument2 = document.querySelectorAll("iframe")[0].contentDocument;
+        let body1 = contentDocument1.querySelector("body");
+        let body2 = contentDocument2.querySelector("body");
+        // contentDocument1.append();
+        let textarea1 = contentDocument1.createElement("textarea"); 
+        let textarea2 = contentDocument2.createElement("textarea"); 
+        
+        body1.append(textarea1);
+        body2.append(textarea2);
+        // console.log(contentDocument1);
+        // console.log(contentDocument2);
+    </script>
+
+    <script src="./test.js"></script>
+
+</body>
+
+</html>

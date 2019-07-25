@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: -webkit-fill-available">
 
 <head>
     <meta charset="utf-8">
@@ -8,36 +8,33 @@
 
 <body>
 
-    <iframe src="" frameborder="0">
-
-    </iframe>
-    <iframe src="" frameborder="0">
-
-    </iframe>
+    <iframe frameborder="1"></iframe>
+    <iframe frameborder="1"></iframe>
 
 
 
 
     <script>
+        (function () {
+            let frames = document.querySelectorAll("iframe");
 
-        let frames = document.querySelectorAll("iframe");
+            console.log(frames[0].contentDocument.body)
+            console.log(frames[1].contentDocument.body)
+            frames.forEach(el=>{
+                el.contentDocument.body.innerHTML = `<textarea><textarea></textarea></textarea>`;
+                el.contentDocument.body.style.fontSize = `14px`;
+                
+                el.style.height = "320px";
+                el.style.width = "400px";
+                el.style.margin = "30px";
+                
+                el.contentDocument.body.firstChild.style.height = "300px";
+                el.contentDocument.body.firstChild.style.width = "300px";
 
-        frames.forEach(el => {
-            el.innerHTML = `${new Document}`;
-        });
-
-        let contentDocument1 = document.querySelectorAll("iframe")[0].contentDocument,
-            contentDocument2 = document.querySelectorAll("iframe")[0].contentDocument;
-        let body1 = contentDocument1.querySelector("body");
-        let body2 = contentDocument2.querySelector("body");
-        // contentDocument1.append();
-        let textarea1 = contentDocument1.createElement("textarea"); 
-        let textarea2 = contentDocument2.createElement("textarea"); 
-        
-        body1.append(textarea1);
-        body2.append(textarea2);
-        // console.log(contentDocument1);
-        // console.log(contentDocument2);
+            })
+            
+            
+        })();
     </script>
 
     <script src="./test.js"></script>

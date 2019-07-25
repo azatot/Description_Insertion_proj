@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" style="height: -webkit-fill-available">
+
+<head>
+    <meta charset="utf-8">
+    <title>Alpha for description insertion plugin</title>
+</head>
+
+<body>
+
+    <iframe frameborder="1"></iframe>
+    <iframe frameborder="1"></iframe>
+
+
+
+
+    <script>
+        (function () {
+            let frames = document.querySelectorAll("iframe");
+
+            console.log(frames[0].contentDocument.body)
+            console.log(frames[1].contentDocument.body)
+            frames.forEach(el=>{
+                el.contentDocument.body.innerHTML = `<textarea><textarea></textarea></textarea>`;
+                el.contentDocument.body.style.fontSize = `14px`;
+                
+                el.style.height = "320px";
+                el.style.width = "400px";
+                el.style.margin = "30px";
+                
+                el.contentDocument.body.firstChild.style.height = "300px";
+                el.contentDocument.body.firstChild.style.width = "300px";
+
+            })
+            
+            
+        })();
+    </script>
+
+    <script src="./descr-plugin.js"></script>
+
+</body>
+
+</html>

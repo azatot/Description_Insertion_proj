@@ -1,2 +1,15 @@
 # Description_Insertion_proj
-Code to fill the description field of product card by copy-paste from html-description-templates.
+One-click paste plugin for products descriptions exclusively for AKS products.
+
+This plugin works as a "Snippet" in Chrome Dev tools. But there is one "step-by-step" way to easy-using:
+
+    1. In Chrome Extensions site you need to find "Inject Code" ext. and install it to your browser;
+    2. Open extension and click "Options";
+    3. Then press "New" button;
+    4. At line with name "Type" select "js" radio;
+    5. At line with name "Code Source" change radio to "cutom code";
+    6. Open file *(name of this plugin).js;
+    7. Copy all inner code;
+    8. Paste code into "custom code" field of extension;
+    9. Go to the editProduct page and start ext in Chrome toolbars in top-right corner;
+    10. Press button with name of created snippet and ... тішся.

@@ -1,0 +1,55 @@
+jQuery(function($) {
+    var pingDelay = 60;
+    var menuUpdater = function() {
+        $.ajax({
+            url: '/backend/index/menu',
+            done: function(data) {
+                $('#divMenuAdmin').html(data);
+            },
+            always: function() {
+                setTimeout(menuUpdater, pingDelay * 1000);
+            }
+        });
+    };
+    setTimeout(menuUpdater, pingDelay * 1000);
+
+    var button = document.createElement("span");
+    button.classList.add('phone-auto-get-btn');
+    $('.phone-auto-get').after(button);
+    $(button).click(function () {
+        let phoneInput = $(this).prev();
+        $.ajax({
+            url: '/backend/calls/get-current-call'
+        }).done(function (data) {
+            console.log(data);
+            if (data.ok) {
+                phoneInput.val(data.phone_client);
+            } else {
+                alert(data.message);
+            }
+        })
+    })
+});
+
+function editAlias(url, id) {
+    let oldAlias = jQuery('#alias').html();
+    let newAlias = prompt('Введите новый Alias', oldAlias);
+    if (newAlias && newAlias != oldAlias) {
+        if (confirm(`Подтвердите смену alias с "${oldAlias}" на "${newAlias}"`)) {
+            jQuery.ajax({
+                url: url,
+                method: 'POST',
+                data: {
+                    id: id,
+                    new_alias: newAlias
+                }
+            }).done(function (data) {
+                if (data == "OK") {
+                    location.reload();
+                } else {
+                    alert(data);
+                }
+            });
+        }
+    }
+}

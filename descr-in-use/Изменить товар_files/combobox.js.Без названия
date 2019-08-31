@@ -1,0 +1,128 @@
+(function($) {
+    $.widget('custom.combobox', {
+        _create: function() {
+            this.wrapper = $('<span>')
+                .addClass('custom-combobox')
+                .insertAfter(this.element);
+
+            this.element.hide();
+            this._createAutocomplete();
+            this._createShowAllButton();
+        },
+
+        value: function(value) {
+            return this.input.val(value);
+        },
+
+        _createAutocomplete: function() {
+            var selected = this.element.children(':selected'),
+                value = selected.val() ? selected.text() : '',
+                thisElement = this.element,
+                ulCustomClass = this.element.parent().attr('class');
+
+            this.input = $('<input>')
+                .appendTo(this.wrapper)
+                .val(value)
+                .attr('title', '')
+                .attr('autocomplete', '_stop_it_')
+                .addClass('custom-combobox-input')
+                .autocomplete({
+                    delay: 0,
+                    minLength: 0,
+                    source: $.proxy(this, '_source'),
+                    position: {
+                        collision: 'flip'
+                    }
+                })
+                .tooltip({
+                    tooltipClass: 'ui-state-highlight'
+                });
+
+            this.input.autocomplete('widget').addClass(ulCustomClass);
+            this.input.data('ui-autocomplete')._renderItem = function(ul, item) {
+                var listElement = $('<li>').append(item.label).appendTo(ul);
+                if (item.option && item.option.hasAttribute('data-color')) {
+                    listElement.css('background', item.option.getAttribute('data-color'));
+                } else if (item.option && item.option.hasAttribute('data-used')) {
+                    listElement.css('background', '#f88');
+                }
+                return listElement;
+            };
+
+            this.input.click(function() {
+                this.select();
+            });
+
+            this._on(this.input, {
+                autocompleteselect: function(event, ui) {
+                    ui.item.option.selected = true;
+                    thisElement.trigger('change');
+                }
+            });
+        },
+
+        _createShowAllButton: function() {
+            var input = this.input,
+                wasOpen = false,
+                ulCustomClass = this.element.parent().attr('class');
+
+            $('<a>')
+                .attr('tabIndex', -1)
+                .attr('title', 'Show All Items')
+                .appendTo(this.wrapper)
+                .button({
+                    icons: {
+                        primary: 'ui-icon-triangle-1-s'
+                    },
+                    text: false
+                })
+                .addClass('custom-combobox-toggle')
+                .mousedown(function() {
+                    wasOpen = input.autocomplete('widget').is(':visible');
+                })
+                .click(function() {
+                    input.focus();
+                    // Close if already visible
+                    if (wasOpen) {
+                        return;
+                    }
+                    // Pass empty string as value to search for, displaying all results
+                    input.autocomplete('widget').addClass(ulCustomClass);
+                    input.autocomplete('search', '');
+                });
+        },
+
+        _source: function(request, response) {
+            var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), 'i');
+            response(this.element.children('option').map(function() {
+                var text = $(this).text();
+                if (this.value && (!request.term || matcher.test(text))) {
+                    return {
+                        label: text,
+                        value: text,
+                        option: this
+                    };
+                }
+            }));
+        },
+
+        _destroy: function() {
+            this.wrapper.remove();
+            this.element.show();
+        }
+    });
+})(jQuery);
+
+// TODO: move to appropriate place
+jQuery(function($) {
+    $('.vendor-select').combobox();
+    $('#selectCategoryId').combobox();
+    $('#brandId').combobox();
+    $('#hotlineBrand').combobox();
+    $('#vendorId').combobox();
+    $('#vendor_id').combobox();
+    $('.category-id').combobox();
+    $('.manager-id').combobox();
+    $('.manager-combobox').combobox();
+    $('.color-combobox #base_id').combobox();
+});

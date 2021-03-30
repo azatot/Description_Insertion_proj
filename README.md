@@ -4,7 +4,7 @@ One-click paste plugin for products descriptions exclusively for AKS products.
 
 To see its functionality - just open file "EditProduct.html" in browser. 
 Plugin will append in top right corner.
-Absolutely all functionality is in desc-in-use.js file. (JS written in ES5-ES6 only)
+Absolutely all functionality is in index.js file. (JS written in ES5-ES6 only)
 
 This plugin works as a "Snippet" in Chrome Dev tools. But there is one "step-by-step" way to easy-using:
 
